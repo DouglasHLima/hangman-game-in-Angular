@@ -1,0 +1,26 @@
+:host{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+input{
+    width: calc(1ch + 15px);
+    height: 45px;
+    font-size: 60px;
+}
+
+button{
+    height: 50px;
+    width: 50px;
+}
+
+.counter{
+    margin-top: 20px;
+    flex-basis: 80%;
+    justify-content: center;
+}
+
