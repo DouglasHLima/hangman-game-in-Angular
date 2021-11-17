@@ -3,15 +3,15 @@
 <div *ngFor="let character of word; let index = index">
  
     <app-display-letters 
-    *ngIf="verifyCharacter(character,index) ;else emptyDisplay" 
+    *ngIf="verifyCharacter(character,index) ;else previousEntriesDisplay" 
     [character]="character"
        >
     </app-display-letters>
-    <ng-template #emptyDisplay>
-        <span *ngIf="correctEntries[index] === word[index] ; else empty">
+    <ng-template #previousEntriesDisplay>
+        <span *ngIf="correctEntries[index] === word[index] ; else emptyDisplay">
             <app-display-letters [character]="correctEntries[index]"></app-display-letters>
         </span>
-        <ng-template #empty>    
+        <ng-template #emptyDisplay>    
             <app-display-letters></app-display-letters>
         </ng-template>  
     </ng-template>
@@ -22,7 +22,7 @@
 <input type="text" maxlength="1" #inputCharacter>
 <button (click)="sendCharacter(inputCharacter)"
         (click)="getResults()"
-        [disabled]="hasWin"
+        [disabled]="hasWin || getErrors() == 5"
         >ok</button>
 
 

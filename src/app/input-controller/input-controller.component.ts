@@ -1,5 +1,5 @@
 import { WordSupplierService } from '../word-supplier.service';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-input-controller',
@@ -8,11 +8,11 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 })
 export class InputControllerComponent implements OnInit {
 
-  public char:string = ''
-  public word:string[]
-  public wins:number = 0
-  public hasWin:boolean = false
-  public correctEntries:string[] = []
+  public char: string = ''
+  public word: string[]
+  public wins: number = 0
+  public hasWin: boolean = false
+  public correctEntries: string[] = []
 
   private allEntries = new Set<string>()
   private errors: number = 0
@@ -26,7 +26,7 @@ export class InputControllerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  sendCharacter(characterInput:HTMLInputElement){
+  sendCharacter(characterInput:HTMLInputElement): void{
     if(characterInput.value){
       this.char = characterInput.value
       this.allEntries.add(characterInput.value)
@@ -35,16 +35,14 @@ export class InputControllerComponent implements OnInit {
     }
   }
 
-
-
-  verifyCharacter(letter:string, index:number):Boolean{
+  verifyCharacter(letter:string, index:number): Boolean{
     if(this.char === letter){
       this.correctEntries[index] = letter
     }
      return this.char === letter
   }
 
-  getEntries():string{
+  getEntries(): string{
     let entries: string[] = []
     this.allEntries.forEach(char=>{
       entries = [...entries,char]
@@ -52,18 +50,18 @@ export class InputControllerComponent implements OnInit {
     return entries.toString()
   }
 
-  getErrors():number{
+  getErrors(): number{
     return this.errors
   }
 
-  getResults(){
+  getResults(): void{
     if(this.correctEntries.join("") === this.word.join("")){
       this.wins++;
       this.hasWin = true
     }
   }
 
-  resetGame(){
+  resetGame(): void{
     this.char = ''
     this.allEntries.clear()
     this.errors = 0
@@ -71,7 +69,7 @@ export class InputControllerComponent implements OnInit {
     this.hasWin = false
     this.word = this.wordSuplyer.getAWord()
   }
-  resetAllGame(){
+  resetAllGame(): void{
     this.resetGame()
     this.wins = 0
     this.hasWin = false
