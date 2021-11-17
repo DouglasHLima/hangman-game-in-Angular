@@ -1,0 +1,30 @@
+:host{
+    width: 500px;
+    height: 300px;
+    border-radius: 150px;
+    background-color: rgb(191, 141, 238);
+    padding: 30px;
+    display: flex;
+    flex-flow: column wrap;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+div{
+    margin-top: auto;
+}
+h1{
+    font-size: 50px;
+    margin-top: 50px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+input{
+    max-width: 2ch;
+    max-height: 2ch;
+    outline: 0px;
+    border: none;
+    background-color: rgba(0,0,0,0);
+    font-size: 50px;
+}
