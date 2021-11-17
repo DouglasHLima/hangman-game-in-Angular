@@ -1,17 +1,17 @@
-<div *ngIf="result;else looserTemplate">
+<div *ngIf="result; else looserTemplate">
     <h1>WINNER!!!</h1>
 
     <ng-template #looserTemplate> </ng-template>
 </div>
 
 <ng-template #looserTemplate>
-    <h1>LOOSER!!!</h1>
+    <h1>GAME OVER!!!</h1>
 </ng-template>
 
 <div>
     Victories:<input type="text" name="victories" readonly [value]="wins">
 </div>
 <div>
-    <button class="reset" (click)="resetTheGame()">reset game</button>
+    <button class="reset" (click)="resetTheGame()" [disabled]="!result">reset game</button>
     <button class="resetAll" (click)="resetAllGame()">reset ALL</button>
 </div>
