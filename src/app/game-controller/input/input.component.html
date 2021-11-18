@@ -1,0 +1,5 @@
+<input type="text" maxlength="1" #inputCharacter>
+<button (click)="sendCharacter(inputCharacter)"
+        (click)="sendOnClick()"
+        [disabled]="hasWin || disabled"
+        >ok</button>

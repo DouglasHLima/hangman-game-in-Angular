@@ -1,41 +1,44 @@
 
-
 <div *ngFor="let character of word; let index = index">
  
     <app-display-letters 
     *ngIf="verifyCharacter(character,index) ;else previousEntriesDisplay" 
-    [character]="character"
-       >
+    [character]="character">
     </app-display-letters>
+
     <ng-template #previousEntriesDisplay>
+
         <span *ngIf="correctEntries[index] === word[index] ; else emptyDisplay">
             <app-display-letters [character]="correctEntries[index]"></app-display-letters>
         </span>
+
         <ng-template #emptyDisplay>    
             <app-display-letters></app-display-letters>
         </ng-template>  
+
     </ng-template>
     
 </div>
 
-
-<input type="text" maxlength="1" #inputCharacter>
-<button (click)="sendCharacter(inputCharacter)"
-        (click)="getResults()"
-        [disabled]="hasWin || getErrors() == 5"
-        >ok</button>
-
+<app-input 
+    [hasWin]="hasWin"
+    [disabled]="getErrors() == maxErrors"
+    (receivedLetter)="sendCharacter($event)"
+    (onClick)="getResult()">
+</app-input>
 
 <app-counter class="counter"   
     [enters]="getEntries()" 
     [wrongEnters]="getErrors()">
 </app-counter>
 
-<div *ngIf="hasWin || getErrors() == 5">
-<app-winner-label [wins]="wins"
-    [result]="hasWin"
-    (resetGame)="resetGame()"
-    (resetAll)="resetAllGame()"
-></app-winner-label>
+<div *ngIf="hasWin || getErrors() == maxErrors">
+
+    <app-winner-label [wins]="wins"
+        [result]="hasWin"
+        (resetGame)="resetGame()"
+        (resetAll)="resetAllGame()">
+    </app-winner-label>
+
 </div>
 

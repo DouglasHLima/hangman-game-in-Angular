@@ -17,7 +17,7 @@ export class WordSupplierService {
   constructor() { }
 
   private sortWord(): string {
-    return this.words[Math.round(Math.random()*this.words.length)]
+    return this.words[Math.floor(Math.random()*this.words.length)]
   }
 
   getAWord(){

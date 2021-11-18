@@ -1,21 +1,24 @@
 import { WordSupplierService } from '../word-supplier.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-input-controller',
-  templateUrl: './input-controller.component.html',
-  styleUrls: ['./input-controller.component.css']
+  selector: 'app-game-controller',
+  templateUrl: './game-controller.component.html',
+  styleUrls: ['./game-controller.component.css']
 })
-export class InputControllerComponent implements OnInit {
+export class GameControllerComponent implements OnInit {
 
-  public char: string = ''
-  public word: string[]
-  public wins: number = 0
-  public hasWin: boolean = false
-  public correctEntries: string[] = []
+  public char: string = ''; 
+  public word: string[];
+  public wins: number = 0;
+  public hasWin: boolean = false;
+  public correctEntries: string[] = [];
+  public maxErrors: number = 6;
+  private errors: number = 0;
 
-  private allEntries = new Set<string>()
-  private errors: number = 0
+  private allEntries = new Set<string>();
+ 
+  
  
 
   constructor(private wordSuplyer: WordSupplierService) { 
@@ -24,14 +27,15 @@ export class InputControllerComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.word = this.wordSuplyer.getAWord()
   }
 
-  sendCharacter(characterInput:HTMLInputElement): void{
-    if(characterInput.value){
-      this.char = characterInput.value
-      this.allEntries.add(characterInput.value)
-      if (!this.word.includes(characterInput.value)) this.errors++;
-      characterInput.value = ''
+
+  sendCharacter(characterInput: string): void{
+    if(characterInput){
+      this.char = characterInput
+      this.allEntries.add(characterInput)
+      if (!this.word.includes(characterInput)) this.errors++;
     }
   }
 
@@ -54,7 +58,7 @@ export class InputControllerComponent implements OnInit {
     return this.errors
   }
 
-  getResults(): void{
+  getResult(): void{
     if(this.correctEntries.join("") === this.word.join("")){
       this.wins++;
       this.hasWin = true
@@ -74,4 +78,6 @@ export class InputControllerComponent implements OnInit {
     this.wins = 0
     this.hasWin = false
   }
+
 }
+

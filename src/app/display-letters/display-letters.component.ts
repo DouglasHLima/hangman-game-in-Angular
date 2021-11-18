@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output, OnChanges, SimpleChange
 export class DisplayLettersComponent implements OnInit{
 
   @Input() character: string = ''
+  @Output() receivedLetter = new EventEmitter()
 
   value: string = ''
 
