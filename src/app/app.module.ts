@@ -8,6 +8,7 @@ import { CounterComponent } from './counter/counter.component';
 import { WinnerLabelComponent } from './winner-label/winner-label.component';
 import { InputComponent } from './game-controller/input/input.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

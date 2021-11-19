@@ -41,9 +41,9 @@ export class GameControllerComponent implements OnInit {
 
   verifyCharacter(letter:string, index:number): Boolean{
     if(this.char === letter){
-      this.correctEntries[index] = letter
+       this.correctEntries[index] = letter
     }
-     return this.char === letter
+    return this.char === letter
   }
 
   getEntries(): string{
@@ -65,7 +65,7 @@ export class GameControllerComponent implements OnInit {
     }
   }
 
-  resetGame(): void{
+  continue(): void{
     this.char = ''
     this.allEntries.clear()
     this.errors = 0
@@ -74,7 +74,7 @@ export class GameControllerComponent implements OnInit {
     this.word = this.wordSuplyer.getAWord()
   }
   resetAllGame(): void{
-    this.resetGame()
+    this.continue()
     this.wins = 0
     this.hasWin = false
   }

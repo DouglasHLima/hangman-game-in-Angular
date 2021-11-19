@@ -12,6 +12,6 @@
     Victories:<input type="text" name="victories" readonly [value]="wins">
 </div>
 <div>
-    <button class="reset" (click)="resetTheGame()" [disabled]="!result">reset game</button>
+    <button class="reset" (click)="continue()" [disabled]="!result">continue</button>
     <button class="resetAll" (click)="resetAllGame()">reset ALL</button>
 </div>

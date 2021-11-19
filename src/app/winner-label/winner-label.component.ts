@@ -10,7 +10,7 @@ export class WinnerLabelComponent implements OnInit {
   @Input() wins: number = 0
   @Input() result: Boolean = false
   
-  @Output() resetGame = new EventEmitter()
+  @Output() continueGame = new EventEmitter()
   @Output() resetAll = new EventEmitter()
 
   constructor() { }
@@ -18,8 +18,8 @@ export class WinnerLabelComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  resetTheGame(){
-    this.resetGame.emit()
+  continue(){
+    this.continueGame.emit()
   }
 
   resetAllGame(){

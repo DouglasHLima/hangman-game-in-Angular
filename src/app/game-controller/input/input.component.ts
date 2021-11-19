@@ -18,7 +18,7 @@ export class InputComponent implements OnInit {
   }
 
   sendCharacter(input: HTMLInputElement){
-    this.receivedLetter.emit(input.value)
+    this.receivedLetter.emit(input.value.toUpperCase())
     input.value = ''
   }
 

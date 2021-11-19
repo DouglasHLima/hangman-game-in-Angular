@@ -1,16 +1,16 @@
-
 <div *ngFor="let character of word; let index = index">
  
     <app-display-letters 
-    *ngIf="verifyCharacter(character,index) ;else previousEntriesDisplay" 
-    [character]="character">
+        *ngIf="verifyCharacter(character,index) ;else previousEntriesDisplay" 
+        [character]="character">
     </app-display-letters>
 
     <ng-template #previousEntriesDisplay>
 
-        <span *ngIf="correctEntries[index] === word[index] ; else emptyDisplay">
-            <app-display-letters [character]="correctEntries[index]"></app-display-letters>
-        </span>
+        <app-display-letters 
+            *ngIf="correctEntries[index] === word[index] ; else emptyDisplay"
+            [character]="correctEntries[index]">
+        </app-display-letters>
 
         <ng-template #emptyDisplay>    
             <app-display-letters></app-display-letters>
@@ -36,7 +36,7 @@
 
     <app-winner-label [wins]="wins"
         [result]="hasWin"
-        (resetGame)="resetGame()"
+        (resetGame)="continue()"
         (resetAll)="resetAllGame()">
     </app-winner-label>
 
